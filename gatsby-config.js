@@ -5,6 +5,7 @@ module.exports = {
       "This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.",
   },
   plugins: [
+    
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-sass",
@@ -14,6 +15,18 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-source-google-calendar",
+      options: {
+        calendarIds: [
+          '04o2jice7c05cla7f0qq8kacrg@group.calendar.google.com',
+        ],
+        // options to retrieve the next 10 upcoming events
+        timeMin: (new Date()).toISOString(),
+        maxResults: 10,
+        singleEvents: true,
+        orderBy: 'startTime',
+      }},
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: "gatsby-source-filesystem",
